@@ -11,6 +11,17 @@ const Data = () => {
     const handle1 =(itemid)=>{
            setndata(ndata.filter(item=>item.id!==itemid))
     }
+    const update=(itemid)=>{
+      setndata(ndata.map(items=>{
+          if(items.id===itemid){
+            return {name:'newname'}
+          }
+          else{
+            return items;
+          }
+      }))
+
+    }
   return (
     <div>
       
@@ -20,6 +31,7 @@ const Data = () => {
             <li key={items.id}>
              {items.name}
              <br/>
+             <button onClick={() =>update(items.id)}>update</button>
              <button onClick={() =>handle1(items.id)}>remove</button>
             </li>
         )
